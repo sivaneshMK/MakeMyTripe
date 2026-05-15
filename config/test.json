@@ -1,6 +1,6 @@
 {
   "base_url" : "https://www.makemytrip.com/",
-  "browser": "Chrome",
+  "browser": "Firefox",
   "max_wait": 10
 
 
