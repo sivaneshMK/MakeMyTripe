@@ -1,9 +1,11 @@
 import base64
+from pathlib import Path
 
 import pytest
 import pytest_html
 
 from drivers.driver_factory import DriverFactory
+from utilities.excel_reader import ExcelReader
 from utilities.logger import Logger
 from utilities.read_json import ReadJson
 from utilities.screenshot import Screenshot
@@ -29,7 +31,7 @@ def config(request):
 def browser(config):
     return config["browser"]
 
-@pytest.fixture(scope="class")
+@pytest.fixture(scope="function")
 def driver(browser, config):
     logger.info(f"Launching browser: {browser}")
     driver = DriverFactory.get_driver(browser)
@@ -60,3 +62,11 @@ def pytest_runtest_makereport(item):
             extra = getattr(report, "extra", [])
             extra.append(pytest_html.extras.png(encoded_image))
             report.extra = extra
+
+@pytest.fixture(scope="function")
+def test_data(request, config):
+    test_name = request.node.name
+    root_path = Path(__file__).parent
+    file_path = root_path/"test_data"/"test_data.xlsx"
+    data = ExcelReader.get_test_data(file_path, "FlightBooking", test_name)
+    return data
