@@ -2,7 +2,8 @@
   "base_url" : "https://www.stage_makemytrip.com/",
   "browser": "Chrome",
   "max_wait": 10,
-  "db_name": "abcdxyz"
+  "db_name": "abcdxyz",
+  "Db_password": "Sysoso"
 
 
 }
