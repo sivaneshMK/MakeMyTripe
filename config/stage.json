@@ -1,7 +1,8 @@
 {
   "base_url" : "https://www.stage_makemytrip.com/",
   "browser": "Chrome",
-  "max_wait": 10
+  "max_wait": 10,
+  "db_name": "abcdxyz"
 
 
 }
