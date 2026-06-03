@@ -1,6 +1,6 @@
 {
   "base_url" : "https://www.makemytrip.com/",
-  "browser": "Firefox",
+  "browser": "Chrome",
   "max_wait": 10,
   "test_data_path": "C:\\Users\\sivan\\PycharmProjects\\MakeMyTripe\\test_data\\test_data.xlsx",
   "db_details": {
