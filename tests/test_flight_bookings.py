@@ -5,6 +5,7 @@ import pytest
 import conftest
 from pages.flight_booking_page import FlightBookingPage
 from utilities.common_utils import CommonUtils
+from utilities.db_utility import DbUtility
 from utilities.excel_reader import ExcelReader
 
 
@@ -36,3 +37,9 @@ class TestFlightBooking:
         selected_city = flight_booking_page.get_selected_city_from_city_list()
         assert selected_city ==data["FromCity"], "user is not able to select From city"
 
+    def test_db(self, get_db_connection):
+        connection = get_db_connection
+        data = DbUtility.execute_query(connection, "SELECT * FROM automation2026.std_standared;")
+        for row in data:
+            print(row["ROLL_NO"])
+        print(data)

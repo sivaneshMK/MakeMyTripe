@@ -5,6 +5,7 @@ import pytest
 import pytest_html
 
 from drivers.driver_factory import DriverFactory
+from utilities.db_utility import DbUtility
 from utilities.excel_reader import ExcelReader
 from utilities.logger import Logger
 from utilities.read_json import ReadJson
@@ -70,3 +71,20 @@ def test_data(request, config):
     file_path = root_path/"test_data"/"test_data.xlsx"
     data = ExcelReader.get_test_data(file_path, "FlightBooking", test_name)
     return data
+
+
+@pytest.fixture(scope="session")
+def get_db_connection(config):
+    db_details = config["db_details"]
+    # "host": "localhost",
+    # "port": 3306,
+    # "db_name": "automation2026",
+    # "username": "root",
+    # "password": "Dec@0312"
+    host = db_details["host"]
+    port = db_details["port"]
+    db_name = db_details["db_name"]
+    username = db_details["username"]
+    password = db_details["password"]
+    connection = DbUtility.get_connection(host, port, db_name, username, password)
+    return connection
