@@ -8,7 +8,8 @@
     "port": 3306,
     "db_name": "automation2026",
     "username": "root",
-    "password": "Sivanesh@0312"
+    "password": "Sivanesh@0312",
+    "abcd": "xyz"
   }
 
 }
